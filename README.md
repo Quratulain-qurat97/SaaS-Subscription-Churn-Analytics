@@ -186,8 +186,8 @@ All 13 business questions were answered using MySQL before building the dashboar
 ### Setup Instructions
 1. Clone this repository
 2. Import the dataset into MySQL Workbench using the provided schema
-3. Run the SQL queries in [`SQL_ANALYSIS.md]` to validate the data
-4. Open [`SaaS_Dashboard.pbix`] in Power BI Desktop
+3. Run the SQL queries in `SQL_ANALYSIS.md` to validate the data
+4. Open `SaaS_Dashboard.pbix` in Power BI Desktop
 5. Ensure data source connections point to your MySQL database
 
 ---
