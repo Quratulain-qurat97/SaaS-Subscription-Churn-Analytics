@@ -125,7 +125,7 @@ SELECT plan_tier,
 FROM ravenstack_subscriptions
 GROUP BY plan_tier
 ORDER BY mrr_lost_pct DESC;
-```   <--- **(Make sure this closing ` ``` ` is right here!)**
+```
 
 **Result Grid:**
 ![Q1 Results](images/Q1.png)
