@@ -4,6 +4,8 @@ This document contains the complete set of 13 MySQL queries used to extract, agg
 
 ---
 
+
+
 ### Query 1: Highest Churn Rate and Revenue Loss by Plan Tier
 ```sql
 Select plan_tier,
@@ -21,6 +23,9 @@ ORDER BY mrr_lost_pct DESC;
 ![Q1 Results](images/Q1.png)
 
 ---
+
+
+
 ### Query 2: Most Common Reasons Customers are Leaving
 ```sql
 SELECT reason_code,
@@ -34,6 +39,9 @@ ORDER BY reason_count DESC;
 ![Q2 Results](images/Q2.png)
 
 ---
+
+
+
 ### Query 3: Average Satisfaction Score for Churned vs Retained Customers
 ```sql
 SELECT  
@@ -50,6 +58,9 @@ GROUP BY customer_status;
 ![Q3 Results](images/Q3.png)
 
 ---
+
+
+
 ### Query 4: Percentage of Customers with Low Satisfaction Scores Who Eventually Churned
 ```sql
 SELECT 
@@ -66,6 +77,9 @@ WHERE satisfaction_score IS NOT NULL
 ![Q4 Results](images/Q4.png)
 
 ---
+
+
+
 ### Query 5: Country Losing the Most Customers and Revenue
 ```sql
 SELECT 
@@ -81,6 +95,9 @@ ORDER BY mrr_lost DESC;
 ![Q5 Results](images/Q5.png)
 
 ---
+
+
+
 ### Query 6: Feature Usage vs Churn Impact
 ```sql
 SELECT 
@@ -99,6 +116,9 @@ ORDER BY average_user_count DESC;
 ![Q6 Results](images/Q6.png)
 
 ---
+
+
+
 ### Query 7: Support Ticket Volume (Complain Frequency) vs Churn
 ```sql
 SELECT 
@@ -127,6 +147,9 @@ FROM ravenstack_churn_events
 ![Q7 Results](images/Q7.png)
 
 ---
+
+
+
 ### Query 8: Customer Tenure Analysis (New vs Long-term)
 ```sql
 SELECT 
@@ -140,6 +163,9 @@ GROUP BY customer_status;
 ![Q8 Results](images/Q8.png)
 
 ---
+
+
+
 ### Query 9a: Downgrade Status Analysis
 ```sql
 SELECT 
@@ -155,6 +181,9 @@ ORDER BY churned_count DESC;
 ![Q9a Results](images/Q9a.png)
 
 ---
+
+
+
 ### Query 9b: Preceding Downgrade Flag Analysis
 ```sql
 SELECT 
@@ -168,6 +197,9 @@ GROUP BY preceding_downgrade_flag;
 ![Q9b Results](images/Q9b.png)
 
 ---
+
+
+
 ### Query 10: Feature Error Count vs Churn Lead
 ```sql
 SELECT
@@ -184,6 +216,9 @@ GROUP BY customer_status;
 ![Q10 Results](images/Q10.png)
 
 ---
+
+
+
 ### Query 11: Industry Churn Rate Breakdown
 ```sql
 SELECT 
@@ -200,6 +235,9 @@ ORDER BY churn_rate DESC;
 ![Q11 Results](images/Q11.png)
 
 ---
+
+
+
 ### Query 12: Referral Source Loyalty Analysis
 ```sql
 SELECT 
@@ -216,6 +254,9 @@ ORDER BY churn_rate DESC;
 ![Q12 Results](images/Q12.png)
 
 ---
+
+
+
 ### Query 13: Company Size Churn Rate Breakdown
 ```sql
 SELECT 
