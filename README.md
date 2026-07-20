@@ -115,7 +115,7 @@ All 13 business questions were answered using MySQL before building the dashboar
 SaaS-Subscription-Churn-Analytics/
 │
 ├── SaaS_Dashboard.pbix          # Power BI dashboard file
-├── SQL_ANALYSIS.md      # All 13 SQL queries with result screenshots
+├── SQL_ANALYSIS.md              # All 13 SQL queries with result screenshots
 ├── README.md                    # Project documentation
 └── images/                      # SQL result grid screenshots directory
 
