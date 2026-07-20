@@ -197,25 +197,26 @@ All 13 business questions were answered using MySQL before building the dashboar
 ```
 SaaS-Subscription-Churn-Analytics/
 │
-├── SaaS_Dashboard.pbix # Power BI dashboard file
-├── SQL_ANALYSIS.md # All 13 SQL queries with result screenshots
-├── README.md # Project documentation (this file)
-├── SaaS_Churn.gif # Dashboard preview animation
-└── images/ # SQL result grid screenshots directory
-├── Q1.png
-├── Q2.png
-├── Q3.png
-├── Q4.png
-├── Q5.png
-├── Q6.png
-├── Q7.png
-├── Q8.png
-├── Q9a.png
-├── Q9b.png
-├── Q10.png
-├── Q11.png
-├── Q12.png
-└── Q13.png
+├── SaaS_Dashboard.pbix          # Power BI dashboard file
+├── README.md                    # Project documentation (this file)
+├── SaaS_Churn.gif               # Dashboard preview
+└── images/                      # SQL result grid screenshots
+    ├── Q1.png
+    ├── Q2.png
+    ├── Q3.png
+    ├── Q4.png
+    ├── Q5.png
+    ├── Q6.png
+    ├── Q7.png
+    ├── Q8.png
+    ├── Q9a.png
+    ├── Q9b.png
+    ├── Q10.png
+    ├── Q11.png
+    ├── Q12.png
+    └── Q13.png
+
+
 ```
 ---
 
