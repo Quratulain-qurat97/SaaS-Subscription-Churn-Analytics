@@ -119,6 +119,7 @@ SaaS-Subscription-Churn-Analytics/
 ├── README.md                    # Project documentation
 └── images/                      # SQL result grid screenshots directory
 
+```
 ---
 
 ## Connect
