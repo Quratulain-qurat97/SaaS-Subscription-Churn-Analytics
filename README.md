@@ -118,21 +118,20 @@ SaaS-Subscription-Churn-Analytics/
 ├── saas_churn_analysis.sql      # All 13 SQL queries with result screenshots
 ├── README.md                    # Project documentation
 └── images/                      # SQL result grid screenshots
-    ├── ![Q1 Results](images/Q1.png)
-    ├── ![Q2 Results](images/Q2.png)
-    ├── ![Q3 Results](images/Q3.png)
-    ├── ![Q4 Results](images/Q4.png)
-    ├── ![Q5 Results](images/Q5.png)
-    ├── ![Q6 Results](images/Q6.png)
-    ├── ![Q7 Results](images/Q7.png)
-    ├── ![Q8 Results](images/Q8.png)
-    ├── ![Q9(a) Results](images/Q9a.png)
-    ├── ![Q9(b) Results](images/Q9b.png)
-    ├── ![Q10 Results](images/Q10.png)
-    ├── ![Q11 Results](images/Q11.png)
-    ├── ![Q12 Results](images/Q12.png)
-    └── ![Q13 Results](images/Q13.png)
-```
+    ├── Q1.png
+    ├── Q2.png
+    ├── Q3.png
+    ├── Q4.png
+    ├── Q5.png
+    ├── Q6.png
+    ├── Q7.png
+    ├── Q8.png
+    ├── Q9a.png
+    ├── Q9b.png
+    ├── Q10.png
+    ├── Q11.png
+    ├── Q12.png
+    └── Q13.png
 
 ---
 
