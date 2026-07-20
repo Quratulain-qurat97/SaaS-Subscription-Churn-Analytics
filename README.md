@@ -228,8 +228,10 @@ SaaS-Subscription-Churn-Analytics/
 [![Gmail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:qurat33002@gmail.com)
 
 ---
+
 Author: Quratulain Tariq  
 Last Updated: July 2026
+
 ---
 
 *"Data doesn't tell stories—analysts do."* 🚀
