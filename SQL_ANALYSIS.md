@@ -35,6 +35,7 @@ FROM ravenstack_churn_events
 GROUP BY reason_code
 ORDER BY reason_count DESC;
 ```
+
 **Result Grid:**
 ![Q2 Results](images/Q2.png)
 
