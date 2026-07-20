@@ -94,7 +94,7 @@ This project analyzes customer churn patterns for a fictional B2B SaaS company (
 
 ## SQL Analysis
 
-All 13 business questions were answered using MySQL before building the dashboard. See [`saas_churn_analysis.sql`](saas_churn_analysis.sql) for all queries.
+All 13 business questions were answered using MySQL before building the dashboard. See [`SQL_ANALYSIS.md`](SQL_ANALYSIS.md) for all queries.
 
 **Techniques used:** `GROUP BY`, `ORDER BY`, `COUNT()`, `SUM()`, `ROUND()`, `AVG()`, `CASE WHEN`, `UNION ALL`, `Subqueries`, `Window Functions (SUM() OVER())`, Multi-table `JOIN`s across 5 relational tables
 
@@ -115,7 +115,7 @@ All 13 business questions were answered using MySQL before building the dashboar
 SaaS-Subscription-Churn-Analytics/
 │
 ├── SaaS_Dashboard.pbix          # Power BI dashboard file
-├── saas_churn_analysis.sql      # All 13 SQL queries with result screenshots
+├── SQL_ANALYSIS.md      # All 13 SQL queries with result screenshots
 ├── README.md                    # Project documentation
 └── images/                      # SQL result grid screenshots directory
 
