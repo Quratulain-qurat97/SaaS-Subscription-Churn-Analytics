@@ -19,7 +19,6 @@ FROM ravenstack_subscriptions
 GROUP BY plan_tier
 ORDER BY mrr_lost_pct DESC;
 ```
-**Result Grid:**
 ![Q1 Results](images/Q1.png)
 
 ---
@@ -35,8 +34,6 @@ FROM ravenstack_churn_events
 GROUP BY reason_code
 ORDER BY reason_count DESC;
 ```
-
-**Result Grid:**
 ![Q2 Results](images/Q2.png)
 
 ---
@@ -55,7 +52,6 @@ WHERE st.satisfaction_score IS NOT NULL
 AND st.satisfaction_score != ''
 GROUP BY customer_status;
 ```
-**Result Grid:**
 ![Q3 Results](images/Q3.png)
 
 ---
@@ -74,7 +70,6 @@ FROM ravenstack_support_tickets
 WHERE satisfaction_score IS NOT NULL
 );
 ```
-**Result Grid:**
 ![Q4 Results](images/Q4.png)
 
 ---
@@ -92,7 +87,6 @@ WHERE s.churn_flag = 'True'
 GROUP BY a.country
 ORDER BY mrr_lost DESC;
 ```
-**Result Grid:**
 ![Q5 Results](images/Q5.png)
 
 ---
@@ -113,7 +107,6 @@ ON s.account_id=e.account_id
 GROUP BY f.feature_name,custumer_status
 ORDER BY average_user_count DESC;
 ```
-**Result Grid:**
 ![Q6 Results](images/Q6.png)
 
 ---
@@ -144,7 +137,6 @@ SELECT DISTINCT account_id
 FROM ravenstack_churn_events
 );
 ```
-**Result Grid:**
 ![Q7 Results](images/Q7.png)
 
 ---
@@ -160,7 +152,6 @@ FROM ravenstack_accounts a
 LEFT JOIN ravenstack_churn_events e ON a.account_id = e.account_id
 GROUP BY customer_status;
 ```
-**Result Grid:**
 ![Q8 Results](images/Q8.png)
 
 ---
@@ -178,7 +169,6 @@ FROM ravenstack_subscriptions
 GROUP BY downgrade_flag
 ORDER BY churned_count DESC;
 ```
-**Result Grid:**
 ![Q9a Results](images/Q9a.png)
 
 ---
@@ -194,7 +184,6 @@ ROUND(COUNT(*) / (SELECT COUNT(*) FROM ravenstack_churn_events) * 100, 2) AS pct
 FROM ravenstack_churn_events
 GROUP BY preceding_downgrade_flag;
 ```
-**Result Grid:**
 ![Q9b Results](images/Q9b.png)
 
 ---
@@ -213,7 +202,6 @@ JOIN ravenstack_subscriptions s ON f.subscription_id = s.subscription_id
 LEFT JOIN ravenstack_churn_events e ON e.account_id = s.account_id
 GROUP BY customer_status;
 ```
-**Result Grid:**
 ![Q10 Results](images/Q10.png)
 
 ---
@@ -232,7 +220,6 @@ LEFT JOIN ravenstack_churn_events e ON a.account_id = e.account_id
 GROUP BY a.industry
 ORDER BY churn_rate DESC;
 ```
-**Result Grid:**
 ![Q11 Results](images/Q11.png)
 
 ---
@@ -251,7 +238,6 @@ LEFT JOIN ravenstack_churn_events e ON a.account_id = e.account_id
 GROUP BY a.referral_source
 ORDER BY churn_rate DESC;
 ```
-**Result Grid:**
 ![Q12 Results](images/Q12.png)
 
 ---
@@ -275,7 +261,6 @@ LEFT JOIN ravenstack_churn_events e ON a.account_id = e.account_id
 GROUP BY company_size
 ORDER BY churn_rate DESC;
 ```
-**Result Grid:**
 ![Q13 Results](images/Q13.png)
 
 ---
