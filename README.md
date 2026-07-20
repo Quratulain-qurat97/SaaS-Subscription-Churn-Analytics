@@ -110,6 +110,7 @@ All 13 business questions were answered using MySQL before building the dashboar
 ---
 
 
+
 ### Query 1: Highest Churn Rate and Revenue Loss by Plan Tier
 
 ```sql
@@ -124,6 +125,7 @@ SELECT plan_tier,
 FROM ravenstack_subscriptions
 GROUP BY plan_tier
 ORDER BY mrr_lost_pct DESC;
+```   <--- **(Make sure this closing ` ``` ` is right here!)**
 
 **Result Grid:**
 ![Q1 Results](images/Q1.png)
