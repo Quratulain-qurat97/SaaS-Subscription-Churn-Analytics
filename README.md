@@ -11,6 +11,7 @@ An end-to-end B2B SaaS churn analysis project using **MySQL** for data extractio
 This project analyzes customer churn patterns for a fictional B2B SaaS company (RavenStack) — identifying why customers cancel, which segments are most at risk, and where revenue loss is concentrated.
 
 **Dataset:** [RavenStack SaaS Subscription & Churn Analytics (Kaggle)](https://www.kaggle.com/datasets/muhammadshahidazeem/customer-churn-dataset)                                       
+**Tables:** 5 relational tables — accounts, subscriptions, feature_usage, support_tickets, churn_events  
 **Total Records:** 500 accounts · 4,853 subscriptions · 25,068 feature usage records · 2,000 support tickets · 600 churn events  
 **Tools:** MySQL Workbench · Power BI Desktop · Microsoft Excel  
 **Scope:** January 2023 – December 2024
