@@ -10,7 +10,7 @@ An end-to-end B2B SaaS churn analysis project using **MySQL** for data extractio
 
 This project analyzes customer churn patterns for a fictional B2B SaaS company (RavenStack) — identifying why customers cancel, which segments are most at risk, and where revenue loss is concentrated.
 
-**Dataset:** [SaaS Subscription & Churn Analytics — Muhammad Shahid Azeem (Kaggle)](https://www.kaggle.com/datasets/muhammadshahidazeem/customer-churn-dataset)  
+**Dataset:** RavenStack SaaS Subscription & Churn Analytics (Kaggle)  
 **Tables:** 5 relational tables — accounts, subscriptions, feature_usage, support_tickets, churn_events  
 **Total Records:** 500 accounts · 4,853 subscriptions · 25,068 feature usage records · 2,000 support tickets · 600 churn events  
 **Tools:** MySQL Workbench · Power BI Desktop · Microsoft Excel  
@@ -109,23 +109,26 @@ All 13 business questions were answered using MySQL before building the dashboar
 
 ---
 
+## Repository Structure
 
-
-### Query 1: Highest Churn Rate and Revenue Loss by Plan Tier
-
-```sql
--- Which plan tier has the highest churn rate and most revenue loss?
-SELECT plan_tier,
-       COUNT(*) AS Subcription,
-       SUM(CASE WHEN churn_flag='True' THEN 1 ELSE 0 END) AS Churn_count,
-       ROUND(SUM(CASE WHEN churn_flag='True' THEN 1 ELSE 0 END)/COUNT(*)*100,2) AS churn_rate_pct,
-       SUM(CASE WHEN churn_flag='True' THEN mrr_amount ELSE 0 END) AS mrr_lost,
-       ROUND(SUM(CASE WHEN churn_flag='True' THEN mrr_amount ELSE 0 END)/
-       SUM(SUM(CASE WHEN churn_flag='True' THEN mrr_amount ELSE 0 END)) OVER() *100,2) AS mrr_lost_pct
-FROM ravenstack_subscriptions
-GROUP BY plan_tier
-ORDER BY mrr_lost_pct DESC;
 ```
+SaaS-Subscription-Churn-Analytics/
+│
+├── SaaS_Dashboard.pbix          # Power BI dashboard file
+├── saas_churn_analysis.sql      # All 13 SQL queries with result screenshots
+├── README.md                    # Project documentation
+└── images/                      # SQL result grid screenshots directory
 
-**Result Grid:**
-![Q1 Results](images/Q1.png)
+---
+
+## Connect
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/quratulain-siddiqui)
+[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Quratulain-qurat97)
+[![Fiverr](https://img.shields.io/badge/Fiverr-1DBF73?style=for-the-badge&logo=fiverr&logoColor=white)](https://www.fiverr.com/quratulain0097)
+[![Gmail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:qurat33002@gmail.com)
+
+---
+
+**Author:** Quratulain Tariq  
+**Last Updated:** July 2026
