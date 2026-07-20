@@ -109,35 +109,21 @@ All 13 business questions were answered using MySQL before building the dashboar
 
 ---
 
-## Repository Structure
 
-```
-SaaS-Subscription-Churn-Analytics/
-│
-├── SaaS_Dashboard.pbix          # Power BI dashboard file
-├── saas_churn_analysis.sql      # All 13 SQL queries with result screenshots
-├── README.md                    # Project documentation
-└── images/                      # SQL result grid screenshots
-    ├── Q1.png
-    ├── Q2.png
-    ├── Q3.png
-    ├── Q4.png
-    ├── Q5.png
-    ├── Q6.png
-    ├── Q7.png
-    ├── Q8.png
-    ├── Q9a.png
-    ├── Q9b.png
-    ├── Q10.png
-    ├── Q11.png
-    ├── Q12.png
-    └── Q13.png
+### Query 1: Highest Churn Rate and Revenue Loss by Plan Tier
 
----
+```sql
+-- Which plan tier has the highest churn rate and most revenue loss?
+SELECT plan_tier,
+       COUNT(*) AS Subcription,
+       SUM(CASE WHEN churn_flag='True' THEN 1 ELSE 0 END) AS Churn_count,
+       ROUND(SUM(CASE WHEN churn_flag='True' THEN 1 ELSE 0 END)/COUNT(*)*100,2) AS churn_rate_pct,
+       SUM(CASE WHEN churn_flag='True' THEN mrr_amount ELSE 0 END) AS mrr_lost,
+       ROUND(SUM(CASE WHEN churn_flag='True' THEN mrr_amount ELSE 0 END)/
+       SUM(SUM(CASE WHEN churn_flag='True' THEN mrr_amount ELSE 0 END)) OVER() *100,2) AS mrr_lost_pct
+FROM ravenstack_subscriptions
+GROUP BY plan_tier
+ORDER BY mrr_lost_pct DESC;
 
-## Connect
-
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/quratulain-siddiqui)
-[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Quratulain-qurat97)
-[![Fiverr](https://img.shields.io/badge/Fiverr-1DBF73?style=for-the-badge&logo=fiverr&logoColor=white)](https://www.fiverr.com/quratulain0097)
-[![Gmail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)]
+**Result Grid:**
+![Q1 Results](images/Q1.png)
