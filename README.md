@@ -11,21 +11,17 @@
 **The Problem:** RavenStack is experiencing a severe retention crisis with **70% overall churn** and MRR Lost accelerating **18x in 2024** (from $15K to $293K monthly).
 
 **The Root Causes:**
-1. **Feature Gaps & Poor Support** drive **36%** of all churn
-2. **Enterprise tier** causes **78.6%** of revenue loss ($926K)
-3. **UK market** churns at **77.59%** (highest globally)
-4. **Mid-market companies (21-50 seats)** churn at **74.5%**
+1. **Feature gaps (29.6%)** and **support issues (27.0%)** are the top-cited reasons among churned customers — closely followed by budget, pricing, and general dissatisfaction (all 24-27%). No single reason dominates.
+2. **Enterprise tier** accounts for **78.6%** of revenue loss ($926K), despite churning at a similar *rate* to other tiers (Enterprise 30.5%, Pro 29.7%, Basic 27.5%)
+3. **UK and Australia** have the highest churn rates (**68.97%** and **68.75%**), though on relatively small account bases
+4. **Mid-market companies (21-50 seats)** churn at the highest rate among group sizes (**74.5%**)
 
 **The Recommendations:**
-1. **Immediate:** Investigate UK market operations and Enterprise feature gaps
-2. **Short-term:** Address product roadmap to close feature gaps driving 19% of churn
+1. **Immediate:** Investigate UK/Australia market operations and Enterprise feature gaps
+2. **Short-term:** Address product roadmap to close feature gaps and support issues driving over half of churn reasons combined
 3. **Long-term:** Build early warning system combining satisfaction extremes and downgrade signals
-
 ---
 
-## 📋 Project Overview
-
-This project analyzes customer churn patterns for a fictional B2B SaaS company (RavenStack) — identifying why customers cancel, which segments are most at risk, and where revenue loss is concentrated.
 
 **Dataset:** [RavenStack SaaS Subscription & Churn Analytics (Kaggle)](https://www.kaggle.com/datasets/muhammadshahidazeem/customer-churn-dataset)  
 **Tables:** 5 relational tables — accounts, subscriptions, feature_usage, support_tickets, churn_events  
@@ -63,35 +59,38 @@ This project analyzes customer churn patterns for a fictional B2B SaaS company (
 - **MRR Lost grew 18x in 2024** — from $15,829 in January to $293,548 in December
 
 ### 📊 Plan Tier Analysis
-- Churn rate is nearly identical across all tiers — Enterprise 9.98%, Pro 9.67%, Basic 9.49%
-- Enterprise accounts for **78.56% of total MRR lost** ($926,345)
-- One churned Enterprise customer = **12 churned Basic customers** in revenue impact
+- Churn rate is genuinely similar across all tiers — **Enterprise 30.5%, Pro 29.7%, Basic 27.5%**
+- Enterprise accounts for **78.6% of total MRR lost** ($926,345) — driven by higher subscription value, not higher churn risk
+- *Note: accounts may hold subscriptions across multiple plan tiers simultaneously; tier-level totals will not sum to the overall customer count*
 
 ### 🎯 Churn Reasons (Top 6)
 
-| Reason | Count | Percentage |
-|--------|-------|------------|
-| Feature Gaps | 114 | 19.00% |
-| Poor Support | 104 | 17.33% |
-| Budget | 104 | 17.33% |
-| No Reason Given | 95 | 15.83% |
-| Competitor | 92 | 15.33% |
-| Pricing | 91 | 15.17% |
+| Reason | Accounts | % of Churned Customers |
+|--------|----------|------------------------|
+| Features | 104 | 29.55% |
+| Support | 95 | 26.99% |
+| Budget | 94 | 26.70% |
+| Pricing | 86 | 24.43% |
+| Unknown | 86 | 24.43% |
+| Competitor | 79 | 22.44% |
 
-> **Key Takeaway:** Product and support issues (36%) outweigh pricing and competitor concerns (30.5%)
+> **Key Takeaway:** Churn is driven by a fairly even spread across product, service, and cost concerns — no single reason dominates. *Percentages don't sum to 100%, since customers may cite multiple reasons.*
 
 ### 🌍 Geographic Performance
 
-| Country | Churn Rate | MRR Lost |
-|---------|------------|----------|
-| UK | 77.59% (Highest) | $175,279 |
-| France | 72.73% | $100,563 |
-| US | 70.79% | $645,721 (Highest) |
-| Canada | 69.57% | $43,327 |
-| Australia | 68.75% | $88,549 |
-| India | 67.35% | $81,589 |
-| Germany | 56.00% (Lowest) | $44,111 |
 
+| Country | Accounts | Churn Rate | MRR Lost |
+|---------|----------|------------|----------|
+| UK | 58 | 68.97% (Highest) | — |
+| Australia | 32 | 68.75% | — |
+| France | 22 | 63.64% | — |
+| US | 291 | 63.23% | $645,721 (Highest) |
+| Canada | 23 | 60.87% | — |
+| Germany | 25 | 52.00% | — |
+| India | 49 | 51.02% (Lowest) | — |
+
+> **Key Takeaway:** UK and Australia have the highest churn *rates*, but on small account bases. The US, despite a lower rate, drives the largest MRR loss due to its much larger customer base — rate and revenue impact tell different stories.
+> 
 ### 👥 Customer Segmentation
 
 | Company Size | Churn Rate |
@@ -112,9 +111,11 @@ This project analyzes customer churn patterns for a fictional B2B SaaS company (
 | **Ads** | **60.20% (Most Loyal)** |
 
 ### ⚠️ Downgrade Analysis
-- Only **8.83%** of churned customers had a prior downgrade — 91.17% cancelled directly
-- Downgrade is **not a reliable early warning signal** — most customers churn without downgrading first
-- **Recommendation:** Don't wait for a downgrade to trigger retention action — it's already too late for 91% of churners
+
+- Only **13.9%** of churned customers had a preceding downgrade — the vast majority churned without that warning sign
+- Downgrade tracking alone is **not sufficient** to predict churn risk
+- **Recommendation:** Don't rely on downgrade activity as your primary early-warning signal
+- *Note: ~30 accounts show conflicting downgrade-flag data across churn events; figures reflect each account counted once per applicable flag value*
 
 ### ❌ What Does NOT Predict Churn
 - Satisfaction Score (churned: 3.98 vs retained: 3.98)
@@ -174,12 +175,12 @@ All 13 business questions were answered using MySQL before building the dashboar
 ## 📈 Business Recommendations
 
 ### 🔴 Immediate (Next 30 Days)
-1. **UK Market Investigation:** Conduct customer interviews with UK churned accounts (77.59% churn rate — highest globally)
+1. **UK & Australia Market Investigation:** Conduct customer interviews with UK & Australia churned accounts (68.97% & 68.75% churn rate — highest globally)
 2. **Enterprise Success Team:** Dedicate senior CSMs to Enterprise accounts (78.6% of MRR loss)
-3. **Feature Gap Audit:** Identify the top missing features driving 19% of all churn events
+3. **Feature Gap Audit:** Identify the top missing features driving 29.6% of all churned customers
 
 ### 🟡 Short-Term (Next 90 Days)
-4. **Product Roadmap Review:** Address feature gaps and support quality — together they drive 36% of churn
+4. **Product Roadmap Review:** Feature gaps and support issues are the two most-cited churn reasons (29.6% and 27.0% of churned customers respectively) — closely followed by budget, pricing, and general dissatisfaction, all in the 24-27% range. No single fix will solve this; a product and support quality review addresses the two largest, most controllable drivers.
 5. **Mid-Market Retention Program:** Targeted campaign for 21-50 seat companies (74.5% churn rate)
 6. **Ads Channel Expansion:** Paid acquisition produces the most loyal customers (60.2% churn vs 75%+ organic)
 
