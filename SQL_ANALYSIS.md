@@ -8,16 +8,16 @@ This document contains the complete set of 13 MySQL queries used to extract, agg
 
 ### Query 1: Highest Churn Rate and Revenue Loss by Plan Tier
 ```sql
-Select plan_tier,
-COUNT(*) AS Subcription,
-SUM(CASE WHEN churn_flag='True' THEN 1 ELSE 0 END) AS Churn_count,
-ROUND(SUM(CASE WHEN churn_flag='True' THEN 1 ELSE 0 END)/COUNT(*)*100,2) AS churn_rate_pct,
+SELECT plan_tier,
+COUNT(DISTINCT account_id) AS distinct_accounts,
+COUNT(DISTINCT CASE WHEN churn_flag='True' THEN account_id END) AS distinct_churned_accounts,
+ROUND(COUNT(DISTINCT CASE WHEN churn_flag='True' THEN account_id END) / 
+COUNT(DISTINCT account_id) * 100, 2) AS churn_rate_pct,
 SUM(CASE WHEN churn_flag='True' THEN mrr_amount ELSE 0 END) AS mrr_lost,
 ROUND(SUM(CASE WHEN churn_flag='True' THEN mrr_amount ELSE 0 END)/
 SUM(SUM(CASE WHEN churn_flag='True' THEN mrr_amount ELSE 0 END)) OVER() *100,2) AS mrr_lost_pct
-FROM ravenstack_subscriptions
-GROUP BY plan_tier
-ORDER BY mrr_lost_pct DESC;
+FROM ravenstack_subscriptions 
+GROUP BY plan_tier ORDER BY mrr_lost_pct DESC;
 ```
 ![Q1 Results](images/Q1.png)
 
@@ -28,11 +28,12 @@ ORDER BY mrr_lost_pct DESC;
 ### Query 2: Most Common Reasons Customers are Leaving
 ```sql
 SELECT reason_code,
-COUNT(reason_code) AS reason_count,
-ROUND(COUNT(reason_code) / (SELECT COUNT(*) FROM ravenstack_churn_events)*100, 2) AS reason_count_pct
+COUNT(DISTINCT account_id) AS accounts_with_reason,
+ROUND(COUNT(DISTINCT account_id) / 
+(SELECT COUNT(DISTINCT account_id) FROM ravenstack_churn_events) * 100, 2) AS pct_of_churned_customers
 FROM ravenstack_churn_events
 GROUP BY reason_code
-ORDER BY reason_count DESC;
+ORDER BY accounts_with_reason DESC;
 ```
 ![Q2 Results](images/Q2.png)
 
@@ -160,34 +161,15 @@ GROUP BY customer_status;
 
 ### Query 9a: Downgrade Status Analysis
 ```sql
-SELECT 
-downgrade_flag,
-COUNT(*) AS Total_customers,
-SUM(CASE WHEN downgrade_flag='True' THEN 1 ELSE 0 END) AS churned_count,
-ROUND(SUM(CASE WHEN downgrade_flag='True' THEN 1 ELSE 0 END)/COUNT(*)*100,2) AS churn_rate_pct
-FROM ravenstack_subscriptions
-GROUP BY downgrade_flag
-ORDER BY churned_count DESC;
-```
-![Q9a Results](images/Q9a.png)
-
----
-
-
-
-### Query 9b: Preceding Downgrade Flag Analysis
-```sql
-SELECT 
-preceding_downgrade_flag,
-COUNT(*) AS churn_count,
-ROUND(COUNT(*) / (SELECT COUNT(*) FROM ravenstack_churn_events) * 100, 2) AS pct_of_churns
+SELECT preceding_downgrade_flag,
+COUNT(DISTINCT account_id) AS distinct_accounts,
+ROUND(COUNT(DISTINCT account_id) / (SELECT COUNT(DISTINCT account_id) FROM ravenstack_churn_events) * 100, 2) AS pct
 FROM ravenstack_churn_events
 GROUP BY preceding_downgrade_flag;
 ```
-![Q9b Results](images/Q9b.png)
+![Q9 Results](images/Q9a.png)
 
 ---
-
 
 
 ### Query 10: Feature Error Count vs Churn Lead
