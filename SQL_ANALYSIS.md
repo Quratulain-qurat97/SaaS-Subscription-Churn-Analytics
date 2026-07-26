@@ -159,7 +159,7 @@ GROUP BY customer_status;
 
 
 
-### Query 9a: Downgrade Status Analysis
+### Query 9: Downgrade Status Analysis
 ```sql
 SELECT preceding_downgrade_flag,
 COUNT(DISTINCT account_id) AS distinct_accounts,
@@ -167,7 +167,7 @@ ROUND(COUNT(DISTINCT account_id) / (SELECT COUNT(DISTINCT account_id) FROM raven
 FROM ravenstack_churn_events
 GROUP BY preceding_downgrade_flag;
 ```
-![Q9 Results](images/Q9a.png)
+![Q9 Results](images/Q9.png)
 
 ---
 
